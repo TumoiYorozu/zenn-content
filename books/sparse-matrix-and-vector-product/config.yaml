@@ -7,9 +7,9 @@ price: 0
 chapters:
   - about
   - intro
-  - what_to_use
   - why_sparse
-  - sparse_blas
+  - what_to_use
   - coo
   - crs
   - matrix_market
+  - sparse_blas
