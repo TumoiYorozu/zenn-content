@@ -1,5 +1,5 @@
 title: "疎行列とベクトルを掛けたい貴方に"
-summary: "疎行列とベクトルを掛けたい貴方に"
+summary: "著者が数値計算の一大ジャンルだと勝手に思っている疎行列ベクトル積について解説します．疎行列を制するものは数値計算を制するような気がします．"
 topics: ["数値計算"]
 published: false
 allow_override: true
@@ -8,6 +8,7 @@ chapters:
   - about
   - intro
   - what_to_use
+  - why_sparse
   - sparse_blas
   - coo
   - crs
