@@ -48,7 +48,7 @@ title: はじめに
 このとき，青色の部分を非零要素 (non-zeros)と呼び，非零要素の数をthe number of non-zerosの頭文字を取って $nnz$ と書く．
 この行列は，nnz=16の行列である．
 
-![](./spmv.png)
+![spmv.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/books/sparse-matrix-and-vector-product/spmv.png)
 
 この行列とベクトルの掛け算の1行目の計算結果 $y_1$ は密行列としてAを扱った場合は，
 
