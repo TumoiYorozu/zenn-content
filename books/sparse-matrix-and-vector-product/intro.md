@@ -42,23 +42,27 @@ title: はじめに
 疎行列ベクトル積は，「計算しやすい」という状態を考えるためにメモリやコンピュータアーキテクチャ，並列化の知識が求められる演算である．
 
 # 用語，略語，英語表記等
-- 疎行列 (Sparse Matrix)
-- 密行列 (Dense Matrix)
-- 疎行列ベクトル積
+- 疎行列
+    - Sparse Matrix
+- 密行列
+    - Dense Matrix
+- 疎行列ベクトル積 (SpMV)
     - Sparse Matrix and Vector Multiplication
     - Sparse Matrix and Vector Product
-- COO 形式 (Coodinate形式，座標形式)
-- CRS 形式 (Compressed Row Storage形式)
-    - 圧縮行格納形式と日本語で書いてあることもある
+- COO 形式 
+    - Coodinate形式，座標形式
+- CRS 形式 
+    - Compressed Row Storage形式
+    - 圧縮行格納形式と日本語で書いてあることもある(あまり見ない)
     - CSR形式と呼ばれることもある
 
-## CRS形式の名称について
-COOやCRSは行列の格納形式 (Storage format)である．
-つまりCOO格納形式はCoodinate Storgae formatと書いて良いわけであるが，
+## CRS形式の名称の問題点とCSR形式
+COOやCRSは行列をメモリ上に保持するための格納形式 (Storage format)である．\
+つまりCOO格納形式はCoodinate Storgae formatと書いて良いわけであるが，\
 CRSはCompressed Row Storageの略なのでCompressed Row Storage Storage formatとなってStorageが重複する．
 
-このような初期の命名ミスが原因(だと思う，出典はない)で，CRS形式はCSR (Compressed Sparse Row)形式とも呼ばれる．
-というか，現在はCSR形式のほうが普及しつつあり，IntelやNVIDIAのライブラリでもCSRと表記されている．
+このような初期の命名ミスが原因(だと思う，出典はない)で，CRS形式はCSR (Compressed Sparse Row)形式とも呼ばれる．\
+というか，現在はCSR形式のほうが普及しつつあり，IntelやNVIDIAのライブラリでもCSRと表記されている．\
 筆者は老害なのでCRSと呼ぶが，若者はCSRと呼んだほうが良いのかもしれない．
 
 
