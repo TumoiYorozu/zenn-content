@@ -6,7 +6,7 @@ published: false
 ---
 
 # はじめに
-もう1年くらい前からだが，oneAPIの登場に伴ってiccが無償化したという話があって，リポジトリをちょこっと追加するだけで簡単にIntel CompilerやIntel Vtuneなどが入るようになった [(参考記事)](https://qiita.com/k_nitadori/items/84c2e7c6c1825c092cc9)
+もう1年くらい前からですが，oneAPIの登場に伴ってiccが無償化したという話があって，リポジトリをちょこっと追加するだけで簡単にIntel CompilerやIntel Vtuneなどが入るようになった [(参考記事)](https://qiita.com/k_nitadori/items/84c2e7c6c1825c092cc9)
 Dockerでも使えるようになっており，[oneapi-hpckit](https://hub.docker.com/r/intel/oneapi-hpckit)を引っ張ってくればすぐに利用できる．簡単だね．
 
 一方で，oneAPIには謎の [DPC++/C++コンパイラ](https://www.xlsoft.com/jp/products/intel/compilers/dpc/index.html) というのが入っている．
@@ -19,7 +19,7 @@ DPC++ delivers parallel programming productivity and performance using a program
 DPC++ is based on C++, incorporates SYCL* from The Khronos Group and includes language extensions developed in an open community process.
 ```
 
-これはLLVMベースのコンパイラとのことで，今までのIntel compilerとは完全に違いそうだ．
+これはLLVMベースのコンパイラで，今までのIntel compilerとは完全に違うっぽい．
 [DPC++はどうやらgithubで開発されてるっぽい？](https://github.com/intel/llvm)が，全てオープンなのかは知らない．
 
 とはいえ中を読んでみると，ライブラリの拡張やOpenCL/SYCLが標準搭載されているだけのC++コンパイラに見える．iccにもOpenCLは付いてきたはずで，DPC++コンパイラとiccは何が違うのか？
@@ -80,7 +80,7 @@ Selected multilib: .;@m64
 ```
 
 あれ，clangがDPCと全く一緒なんだが？
-なるほどLLVMに手を入れてintel/LLVMを作っているからフロントエンドのclangとDPC++は両方作れて，バックエンドはintel/LLVMになっているのか．．．
+なるほどLLVMに手を入れてintel/LLVMを作っているからフロントエンドのclangとDPC++は両方作れるわけで，このコンテナではバックエンドはintel/LLVMのclang, dpcppになっているのか．．．
 
 そしてiccもDPC++も `/opt/intel/oneapi/compiler/` の下にあることもわかった．
 もしかしてライブラリは共通か．．？
@@ -123,7 +123,7 @@ libiomp5.soが `/opt/intel` をちゃんと見てる．それ以外は `lib64`�
 	librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f0f21a4d000)
 ```
 
-libiomp5.soが `/opt/intel/oneapi/` を見てる．それ以外は `lib64`．
+libiomp5.soが `/opt/intel/oneapi/` を見てる．それ以外は `/lib/x86_64_-linux-gnu/`．
 
 OpenMPについてはintel OpenMPを使う模様．最適化の出来は不明だが，これは商用iccが完全に無償になったものと捉えて良さそう？
 
@@ -148,6 +148,7 @@ OpenMPについてはintel OpenMPを使う模様．最適化の出来は不明�
 ```
 
 libiomp5.soが `/opt/intel/oneapi/` を見てる．つまりこの辺はiccと共通らしい．
+それ以外は `/lib/x86_64_-linux-gnu/`で，これもiccと同じ．
 
 一方でSYCLとかOpenCLを頼んでもいないのに勝手にリンクするようになった．クロスコンパイルするときにすごく面倒臭そう．
 
@@ -158,6 +159,8 @@ iccだとリンクされなかったんだが，リンク条件が変わった�
 
 なんか邪魔くさいのがいっぱい付いてきたけど，intel専用のライブラリをうまく使ってくれているんだとしたら，こっちのほうが速くなりそうな感じはある．
 あとはバックエンドがintel独自からLLVM拡張になったことでどうなるか？
+
+ただ，従来のiccを使うか，dpcppを使うかについては，性能以前にSYCLを外せるかどうか，クロスコンパイルできるかどうかなどを調べてからのほうが良さそうだ．
 
 # OpenMP ライブラリ周り
 
