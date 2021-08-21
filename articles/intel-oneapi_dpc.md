@@ -2,7 +2,7 @@
 title: "Intel oneAPIのIntelコンパイラやDPC++についてちょっと調べた"
 type: "tech"
 topics: ["C/C++"]
-published: false
+published: true
 ---
 
 # はじめに
