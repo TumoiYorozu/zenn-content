@@ -12,7 +12,7 @@ Dockerでも使えるようになっており，[oneapi-hpckit](https://hub.dock
 一方で，oneAPIには謎の [DPC++/C++コンパイラ](https://www.xlsoft.com/jp/products/intel/compilers/dpc/index.html) というのが入っている．
 [公式](https://newsroom.intel.com/news/intels-one-api-project-delivers-unified-programming-model-across-diverse-architectures/#gs.9fgeo2)を見ると，Data Parallel C++という新しいプログラミング言語だとか書いてあって，それのコンパイラのようだ．
 
-``
+```
 One API contains a new direct programming language, Data Parallel C++ (DPC++), an open, cross-industry alternative to single architecture proprietary languages. DPC++ delivers parallel programming productivity and performance using a programming model familiar to developers. DPC++ is based on C++, incorporates SYCL* from The Khronos Group and includes language extensions developed in an open community process.
 ```
 
@@ -74,11 +74,41 @@ Candidate multilib: .;@m64
 Selected multilib: .;@m64
 ```
 
-clang乗っ取られとるやんけｗｗｗｗ
+あれ，clangがDPCと全く一緒なんだが？
+なるほどLLVMに手を入れてintel/LLVMを作っているからフロントエンドのclangとDPC++は両方作れて，バックエンドはintel/LLVMになっているのか．．．
 
-## わかったこと
-- DPC++は[intel/LLVM](https://github.com/intel/llvm)をベースにして作られたLLVMのフロントエンドなので，ベースのLLVMがLLVM
-
+そしてiccもDPC++も `/opt/intel/oneapi/compiler/` の下にあることもわかった．
+もしかしてライブラリは共通か．．？
 
 # リンクされるライブラリ等
+適当なコードでOpenMPと数学ライブラリを使うようにして，`-fopenmp` と `-lm` をつけたものを `ldd` してみた．
 
+## 有償icc (19.1.3.304)の結果
+
+```
+	linux-vdso.so.1 =>  (0x00007fff48383000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f979e59b000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x00007f979e293000)
+	libiomp5.so => /opt/intel/2020.4/compilers_and_libraries_2020.4.304/linux/compiler/lib/intel64_lin/libiomp5.so (0x00007f979de8d000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00007f979dc77000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f979da5b000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f979d68e000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f979d48a000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f979e89d000)
+```
+
+# 今後の課題
+どうもライブラリはiccとDPC++で共通っぽいが，最適化のパスは流石に違うんだろうと思うので，性能についても検証したい．
+
+`/ope/oneapi` には，以下のようにvtuneとかmpiもあるので，この辺もちゃんと見ておきたい．
+
+```
+root@bf0951e94aef:/opt/intel/oneapi# ls
+advisor    conda_channel  dpl          ippcp                 mpi                                     sys_check.sh
+ccl        dal            etc          itac                  readme-get-started-linux-base-kit.html  tbb
+clck       debugger       inspector    licensing             readme-get-started-linux-hpc-kit.html   vpl
+common.sh  dev-utilities  intelpython  mkl                   setvars.sh                              vtune
+compiler   dnnl           ipp          modulefiles-setup.sh  support.txt
+```
+
+あと，intelじゃなくてAMDのCPUに入れようとしたりするとどうなるのかについて調べたいところ．
