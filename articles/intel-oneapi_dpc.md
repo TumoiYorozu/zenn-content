@@ -231,3 +231,15 @@ common.sh  dev-utilities  intelpython  mkl                   setvars.sh         
 compiler   dnnl           ipp          modulefiles-setup.sh  support.txt
 ```
 
+# 追記
+intel/LLVMをバックエンドにしたclangがあるんだったらDPC++なんて使わなくていいじゃんって思ったんだ
+
+```
+root@c36a8f3d4268:/# clang++ -fopenmp a.cpp 
+a.cpp:1:9: fatal error: 'omp.h' file not found
+#include<omp.h>
+        ^~~~~~~
+1 error generated.
+```
+
+( ﾟдﾟ)ハァ？
