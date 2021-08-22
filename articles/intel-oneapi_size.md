@@ -1,20 +1,20 @@
 ---
-title: "Intel oneAPIのUbuntuへのインストールとサイズでかすぎ問題"
+title: "Intel oneAPIのUbuntuへのインストールとToolkitのサイズでかすぎ問題"
 type: "tech"
 topics: ["cpp"]
 published: false
 ---
 
 # はじめに
-これは [Intel oneAPIのIntelコンパイラやDPC++についてちょっと調べた] (https://zenn.dev/hishinuma_t/articles/intel-oneapi_dpc) の番外編です．
+これは [Intel oneAPIのIntelコンパイラやDPC++についてちょっと調べた](https://zenn.dev/hishinuma_t/articles/intel-oneapi_dpc) の番外編です．
 
 この記事では2つの話を取り扱います．
 1. Ubuntu 20.04.2 LTSへのoneAPIの導入 (CentOSへの導入については [別の記事](https://qiita.com/k_nitadori/items/84c2e7c6c1825c092cc9)があります)
-2. そもそも落としてくるとサイズが20GB以上あって辛すぎるから選んで入れようねという啓蒙活動
+2. 落としてくるとサイズが20GB以上あって辛すぎるから選んで入れようねという啓蒙活動
 
-でかすぎ問題については，コンテナにして配布することを考えると，ただCコンパイラが欲しいだけなのにコンテナが20GB超になるのはちょっと許せないです．
+でかすぎ問題については，コンテナにして配布することを考えると，Cコンパイラが欲しいだけなのにコンテナが20GB超になるのはちょっと許せないです．
 まとめて落ちてくるツールキットだと無駄なのが落ちてきまくるので，自分で選んで入れようねって話です．
-なにが必要なのかは人によると思うのでこの記事では一例として，HPCっぽい人が使うことを考えてどうやってインストールしたら良いのかについて書きます．
+なにが必要なのかは人によると思いますが，この記事では一例としてC/C++ユーザが使うことを考えてどうやってインストールしたら良いのかについて書きます．
 
 ただaptで一個ずつ入れるだけの話だろ？と思うかもしれませんが，色々パッケージを見ていたら旧有償iccとは若干違いそうなところも見つけたので，多少は面白いと思います．
 
@@ -32,7 +32,7 @@ published: false
 [2]: https://software.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-using-package-managers/apt.html#apt
 
 ってことで雑なスクリプトを作りました．
-私はコンテナなのでkeyの追加のためにwgetとgnupgを入れてますが，既にインストール済なら消すなりください
+私はコンテナで何も入ってないのでkeyの追加のためにwgetとgnupgを入れてますが，既にインストール済なら消すなりしてください
 
 ```sh
 # use wget to fetch the Intel repository public key
@@ -55,7 +55,7 @@ apt update -y
 iccとかvtuneとか，それぞれパッケージがあるけど，まとめたツールキットが配布されています．
 公式でもこれをオススメしているようで，Qiitaとかの記事も探しましたが，皆これを入れているようです．
 
-配布されているツールキットは以下の7つで，詳細は[公式のここ] (https://software.intel.com/content/www/us/en/develop/tools/oneapi/all-toolkits.html#hpc-kit)に書いてあります．
+配布されているツールキットは以下の7つで，詳細は[公式のここ](https://software.intel.com/content/www/us/en/develop/tools/oneapi/all-toolkits.html#hpc-kit)に書いてあります．
 
 - Intel® oneAPI Base Toolkit ( `apt install intel-basekit` )
 - Intel® oneAPI HPC Toolkit ( `apt install intel-hpckit` )
@@ -65,7 +65,7 @@ iccとかvtuneとか，それぞれパッケージがあるけど，まとめた
 - Intel® oneAPI Distribution of OpenVINO Toolkit (私の環境では `apt search` で出てこず)
 - Intel® System Bring-up Toolkit (私の環境では `apt search` で出てこず)
 
-と思ったら， `apt search` を色々grepしていたら載っていない8つめが出てきました．[個別のページ](https://software.intel.com/content/www/us/en/develop/tools/oneapi/dl-framework-developer-toolkit.html#gs.8zbc3a)はあって，DeepLearning Frameworkだそうです．
+と思ったら， `apt search` に載っていない8つめが出てきました．[個別のページ](https://software.intel.com/content/www/us/en/develop/tools/oneapi/dl-framework-developer-toolkit.html#gs.8zbc3a)はあって，DeepLearning Frameworkだそうです．
 
 - Intel® oneAPI DL Framework Developer Toolkit ( `apt install intel-dlfdkit` )
 
@@ -75,7 +75,7 @@ iccとかvtuneとか，それぞれパッケージがあるけど，まとめた
 
 と，思うじゃないですか．
 
-# oneAPIさんサイズでかすぎ問題
+# oneAPIさんのToolkitサイズでかすぎ問題
 落とそうとしたときのメッセージを見てください．こんなのコンテナで配ってられません．
 
 - basekit
@@ -109,8 +109,6 @@ intel/oneapi-hpckit  latest  68ffdbe86df4   7 weeks ago    22.7GB
 参考までに，hpckitを入れようとすると出てくるパッケージリストは以下です．
 `ecripse-cfg` とか `python` とかいう文字が見えます．マジで何でも詰め込んできやがったなって感じがします．
 
-```
-intel-hpckitで落ちてくるのは以下
 ```
  cmake cmake-data intel-basekit intel-basekit-getting-started intel-hpckit-getting-started intel-oneapi-advisor
   intel-oneapi-ccl-2021.3.0 intel-oneapi-ccl-devel intel-oneapi-ccl-devel-2021.3.0 intel-oneapi-clck
