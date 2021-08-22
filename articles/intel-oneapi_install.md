@@ -16,7 +16,7 @@ published: false
 まとめて落ちてくるツールキットだと無駄なのが落ちてきまくるので，自分で選んで入れようねって話です．
 なにが必要なのかは人によると思いますが，この記事では一例としてC/C++ユーザが使うことを考えてどうやってインストールしたら良いのかについて書きます．
 
-ただaptで一個ずつ入れるだけの話だろ？と思うかもしれませんが，色々パッケージを見ていたら旧有償iccとは若干違いそうなところも見つけたので，多少は面白いと思います．
+ただaptで一個ずつ入れるだけの話だろ？と思うかもしれませんが，色々パッケージを見ていたら旧有償iccとは若干違いそうなところも見つけたので，色々書いてる．．．つもりです．
 
 # Ubuntu 20.04.2 LTSへのoneAPIの導入
 
@@ -28,8 +28,8 @@ published: false
 これは大した話ではなくて，ちゃんと[本家のマニュアル][1]があって，yumやらaptで入ることになってます．
 本家のoneAPIコンテナはUbuntu18.04までしかありませんが，[システム要件のページ][2]を見ると，20.04でも入るということになっています．
 
-[1]: https://software.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-using-package-managers.html
-[2]: https://software.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-using-package-managers/apt.html#apt
+[1]:https://software.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-using-package-managers.html
+[2]:https://software.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-using-package-managers/apt.html#apt
 
 ってことで雑なスクリプトを作りました．
 私はコンテナで何も入ってないのでkeyの追加のためにwgetとgnupgを入れてますが，既にインストール済なら消すなりしてください
