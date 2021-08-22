@@ -41,7 +41,7 @@ DPC++ is based on C++, incorporates SYCL* from The Khronos Group and includes la
 - oneAPIに含まれるIntel Compiler
     - intel/oneapi-hpckit:devel-ubuntu18.04コンテナに含まれるものを利用
     - `which icc`の結果: `/opt/intel/oneapi/compiler/2021.3.0/linux/bin/intel64/icc`
-    - `icc -v`の結果: icc version 2021.3.0 (gcc version 7.5.0 compatibility)
+    - `icc -v`の結果: `icc version 2021.3.0 (gcc version 7.5.0 compatibility)`
 
 - oneAPIに含まれるDPC++ 
     - intel/oneapi-hpckit:devel-ubuntu18.04コンテナに含まれるものを利用
