@@ -107,7 +107,7 @@ intel/oneapi-hpckit  latest  68ffdbe86df4   7 weeks ago    22.7GB
 ```
 
 参考までに，hpckitを入れようとすると出てくるパッケージリストは以下です．
-`ecripse-cfg` とか `python` とかいう文字が見えます．マジで何でも詰め込んできやがったなって感じがします．
+`python` とかいう文字が見えます．iccが欲しいだけなのに余計なものを詰め込みやがってこのry．
 
 ```
  cmake cmake-data intel-basekit intel-basekit-getting-started intel-hpckit-getting-started intel-oneapi-advisor
@@ -190,8 +190,8 @@ intelpythonでかすぎ．．
 
 # oneAPIの個別のパッケージを見る
 
-ということで，hpckitに頼らずにいるやつだけ入れていきます．C/C++コンパイラと，プロファイラと，MKLとプロファイラだけでいいでしょう．
-なお，ハードウェアによって色々切り替えてるっぽいので，ここに書いたサイズなどはあくまで参考値です．
+ということで，hpckitに頼らずにいるやつだけ入れていきます．C/C++コンパイラと，プロファイラと，MKLだけでいいでしょう．
+なお，ハードウェアによって色々バイナリを切り替えてるっぽいので，ここに書いたサイズなどはあくまで参考値です．
 
 ということで個別に入れるにはどうしたら良いのかを見ていきます．
 
@@ -210,7 +210,7 @@ The following NEW packages will be installed:
 ```
 
 OpenMPやTBBに依存しているようです．DPC++のランタイムまで降ってくるのは何なんでしょうね？
-というか，これまでのMKLとは違うのかもしれません．
+これはもしかすると，これまでのMKLとは違うのかもしれません．
 
 この時点で `opt/intel/oneapi/compiler/` が生まれますが，700MB程度の `bin/` のないライブラリだけの状態です．
 
@@ -245,7 +245,10 @@ The following NEW packages will be installed:
   intel-oneapi-tbb-common-devel-2021.3.0 intel-oneapi-tbb-devel-2021.3.0
 ```
 
-実行したら，`dpcpp` コマンドも入ってしまいました．iccだけを入れることは不可能のようです．つまりよくわかんないLLVMは必ず入ります．
+[前回の記事](https://zenn.dev/hishinuma_t/articles/intel-oneapi_dpc) のとおり，
+この無償iccはOpenMPなどの一部のライブラリがDPC++のベースであるintel/LLVMに含まれるものを使っているので，
+DPC++なしに入れることはできないようです．
+つまりよくわかんないLLVMは必ず入ります．iccだけを入れることは不可能のようです．
 
 ### DPC++だけを入れる
 
@@ -264,6 +267,9 @@ The following NEW packages will be installed:
   intel-oneapi-dpcpp-debugger-10.1.2 intel-oneapi-dpcpp-debugger-eclipse-cfg intel-oneapi-libdpstd-devel-2021.4.0 intel-oneapi-tbb-common-devel-2021.3.0 intel-oneapi-tbb-devel-2021.3.0
 ```
 
+パッケージの違いがほとんどありません．DPC++ってなんなんでしょうね．．．
+僕にはiccにSYCLとOpenCLをかぶせた糖衣構文的なものにしか見えないんですけど，最適化のパスとかが違うんでしょうか．さっぱりわかりませんね．．
+
 ## プロファイラを入れる
 ここでコンテナを一度作り直して，クリーンな状態にします．
 
@@ -280,11 +286,9 @@ apt install intel-oneapi-vtune
 ```
 The following NEW packages will be installed:
   intel-oneapi-common-licensing-2021.3.0 intel-oneapi-common-vars intel-oneapi-vtune
-
 ```
 
-
-## まとめ
+## [まとめ] ここまでを全部入れると
 C/C++構成でよく使いそうなicc / dpcpp / mkl / vtuneを入れてみました．
 
 ```
