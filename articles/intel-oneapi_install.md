@@ -2,7 +2,7 @@
 title: "Intel oneAPIのUbuntuへのインストールとToolkitのサイズでかすぎ問題"
 type: "tech"
 topics: ["cpp"]
-published: false
+published: true
 ---
 
 # はじめに
