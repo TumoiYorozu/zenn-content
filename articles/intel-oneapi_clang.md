@@ -1,5 +1,5 @@
 ---
-title: "Intel oneAPIを入れるとClangは死ぬ"
+title: "Intel oneAPIを入れるとClangは死ぬかもしれない"
 type: "tech"
 topics: ["cpp"]
 published: true
