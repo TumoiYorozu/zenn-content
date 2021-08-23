@@ -6,7 +6,7 @@ published: false
 ---
 
 # はじめに
-** TL;DR. Intel oneAPIはClangと競合します． oneAPIを入れるとClangは死にます．回避は出来ません **
+**TL;DR. Intel oneAPIはClangと競合します． oneAPIを入れるとClangは死にます．回避は出来ません**
 
 色んな所でiccが無償になって，yumやaptで簡単に入るよって書いてる記事がありますが，これは罠です． `setvars.sh` とかいうクソスクリプトがシステムの環境変数設定をぶち壊す可能性があります．
 
