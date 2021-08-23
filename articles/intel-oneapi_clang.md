@@ -124,7 +124,6 @@ Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
 Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
 Candidate multilib: .;@m64
 Selected multilib: .;@m64
-Found CUDA installation: /usr/local/cuda-11.4, version 11.2
 ```
 
 は？？？？？？
