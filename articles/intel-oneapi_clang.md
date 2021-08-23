@@ -2,7 +2,7 @@
 title: "Intel oneAPIを入れるとClangは死ぬ"
 type: "tech"
 topics: ["cpp"]
-published: false
+published: true
 ---
 
 # はじめに
