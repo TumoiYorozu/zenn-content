@@ -229,3 +229,14 @@ Selected multilib: .;@m64
 ```
 
 はい．
+
+一応バイナリは別物らしいけど．．．なにが違うのかわからないですね．．
+
+```
+# diff ifx intel64/ifort
+Binary files ifx and intel64/ifort differ
+# du ifx
+3184    ifx
+# du intel64/ifort
+4140    intel64/ifort
+```
