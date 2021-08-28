@@ -41,5 +41,19 @@ Fortranコンパイラとしてifortに加えて新しくifxが追加され，�
 本記事では，icx/icpxに加え，Fortranコンパイラも含めたoneAPIに含まれるC/C++/Fortranコンパイラについて整理します．
 
 # icc/icpc/ifort
-これは
+これは有償だったIntelコンパイラが無償になったもののようです．
 
+```sh
+# icc -v
+icc version 2021.3.0 (gcc version 7.5.0 compatibility)
+
+# icpc -v
+icpc version 2021.3.0 (gcc version 7.5.0 compatibility)
+
+# ifort -v
+ifort version 2021.3.0
+```
+
+これらは [Intel/LLVM](https://github.com/intel/llvm) には含まれておらず，完全にプロプライエタリなコンパイラのようです．
+
+![spmv.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/articles/img/intel_compiler_roadmap.png)
