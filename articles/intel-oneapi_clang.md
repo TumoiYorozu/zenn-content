@@ -20,6 +20,10 @@ iccが無償になって，yumやaptで簡単に入るよって書いてる記�
 [1]:https://zenn.dev/hishinuma_t/articles/intel-oneapi_dpc
 [2]:https://zenn.dev/hishinuma_t/articles/intel-oneapi_install
 
+**20210829追記**
+LLVMベースの新しいコンパイラはicx/icpxであり，DPC++はicx/icpxにSYCLやOpenCLを追加したものでした．DPC++がLLVMベースのコンパイラであることに間違いはありませんが，情報が不足していた点，お詫びします．
+[こちら](https://zenn.dev/hishinuma_t/articles/intel-oneapi_packages)にicx/icpxも含めたコンパイラの一覧を整理しました．
+
 ## 忙しい人のためのまとめ
 - oneAPIからDPC++というLLVMベースのC++コンパイラが入りました．
     - ベースのLLVMは通常のものではなく，[IntelによるLLVMのフォーク品](https://github.com/intel/llvm) (intel/LLVM)です

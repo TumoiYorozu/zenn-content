@@ -30,8 +30,7 @@ DPC++ is based on C++, incorporates SYCL* from The Khronos Group and includes la
 最適化周りについては，評価が難しいのでまた次回．
 
 **20210829追記**
-LLVMベースの新しいコンパイラはicx/icpxであり，DPC++はicx/icpxにSYCLやOpenCLを追加したものでした．
-DPC++がLLVMベースのコンパイラであることに間違いはありませんが，情報が不足していた点，お詫びします．
+LLVMベースの新しいコンパイラはicx/icpxであり，DPC++はicx/icpxにSYCLやOpenCLを追加したものでした．DPC++がLLVMベースのコンパイラであることに間違いはありませんが，情報が不足していた点，お詫びします．
 [こちら](https://zenn.dev/hishinuma_t/articles/intel-oneapi_packages)にicx/icpxも含めたコンパイラの一覧を整理しました．
 
 # 比較対象

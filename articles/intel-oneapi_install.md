@@ -18,6 +18,10 @@ published: true
 
 ただaptで一個ずつ入れるだけの話だろ？と思うかもしれませんが，色々パッケージを見ていたら旧有償iccとは若干違いそうなところも見つけたので，色々書いてる．．．つもりです．
 
+**20210829追記**
+LLVMベースの新しいコンパイラはicx/icpxであり，DPC++はicx/icpxにSYCLやOpenCLを追加したものでした．DPC++がLLVMベースのコンパイラであることに間違いはありませんが，情報が不足していた点，お詫びします．
+[こちら](https://zenn.dev/hishinuma_t/articles/intel-oneapi_packages)にicx/icpxも含めたコンパイラの一覧を整理しました．
+
 # Ubuntu 20.04.2 LTSへのoneAPIの導入
 
 ## リポジトリ登録
