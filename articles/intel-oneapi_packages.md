@@ -7,9 +7,14 @@ published: false
 
 # はじめに
 この記事は以下3つの記事の続きです．
+
 - [Intel oneAPIのIntelコンパイラやDPC++についてちょっと調べた][1]
 - [Intel oneAPIのUbuntuへのインストールとToolkitのサイズでかすぎ問題][2]
 - [Intel oneAPIを入れるとClangが死ぬかもしれない][3]
+
+[1]:https://zenn.dev/hishinuma_t/articles/intel-oneapi_dpc
+[2]:https://zenn.dev/hishinuma_t/articles/intel-oneapi_install
+[3]:https://zenn.dev/hishinuma_t/articles/intel-oneapi_clang
 
 私の認識に不足があり，上記の記事に対し以下の情報をいただきました．
 
