@@ -2,7 +2,7 @@
 title: "Intel oneAPIに含まれるC/C++/Fortranコンパイラについて"
 type: "tech"
 topics: ["cpp"]
-published: false
+published: true
 ---
 
 # はじめに
@@ -165,10 +165,10 @@ Selected multilib: .;@m64
 
 ## リンクされるライブラリ
 適当なコードに， `-O3 -fopenmp -lm` をつけてコンパイルして `ldd` してみると，icx/icpxのときのものに加えて，
-- libOpenCL.so.1 (OpenCL)
-- libsycl.so (SYCL)
-- libsvml.so (Short Vector Mathematical Library)
-- libirng.so (乱数)
+- `libOpenCL.so.1` (OpenCL)
+- `libsycl.so` (SYCL)
+- `libsvml.so` (Short Vector Mathematical Library)
+- `libirng.so` (乱数)
 
 を勝手に引っ張ってきました．勝手な想像ですが，DPC++はicx/icpxの糖衣構文で，リンクオプション等を色々くっつけているだけのものではないでしょうか．
 
@@ -196,7 +196,9 @@ Selected multilib: .;@m64
 これについてはよくわからないですが，[前回の記事][3] で結構書いたので省略します．
 
 # ifx
-これはまだBetaということらしいですが入っています．それではヘルプを見てみましょう．
+これはまだBetaということらしいですが入っています．おかしいLLVM/flangなんてものは幻のはずだ．．．！
+
+それではヘルプを見てみましょう．
 
 ```sh
 # ifx -help
