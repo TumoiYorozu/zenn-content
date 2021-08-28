@@ -20,19 +20,26 @@ published: false
 
 https://twitter.com/subarutaro/status/1429836397754470408?s=20
 
-私の記事ではicc/icpcに加えてLLVMベースのDPC++が増え，合計3つのコンパイラがあるという記述でしたが，DPC++はicx/icpxの拡張であり，実際にLLVMベースのコンパイラはicx/icpxというものでした．
+私の記事ではicc/icpcに加えてLLVMベースのDPC++が増え，合計3つのコンパイラがあるという記述でしたが，実際にIntelコンパイラをLLVMベースとして作り直したものの名前はicx/icpxというものでした．
 
-整理しますと，
+DPC++はicx/icpxの拡張であり，SYCLなどを有効にしたものになります．
+
+つまり，先日の記事に書かせていただいた，DPC++がLLVMベースあることや，実験の結果に誤りはありませんが，情報が不足して居たということになります．この点，謹んでお詫びします．
+
+調べ直してきまして，ざっくり整理しますと，
 - 従来のインテルコンパイラ(classicと呼ばれる)であるiccとicpc
 - LLVMベースの新しいインテルコンパイラであるicxとicpx
 - icxとicpxにOpenCLやSYCLを加えたDPC++(コマンドとしてはdpcpp)
+- [Intel/LLVM](https://github.com/intel/llvm) に含まれるClang
 
-で，C/C++コンパイラが合計5種．
+で，C/C++コンパイラが合計6種．
 
 Fortranコンパイラとしてifortに加えて新しくifxが追加され，合計2種．
 
-つまりoneAPIには，C/C++とFortranコンパイラをあわせて7つのコンパイラが用意されています．
-
-先日の記事に書かせていただいた，DPC++がLLVMベースあることや，実験の結果に誤りはありませんが，情報が不足していた点，謹んでお詫びします．
+つまりoneAPIには，C/C++とFortranコンパイラをあわせて8つのコンパイラが用意されています．
 
 本記事では，icx/icpxに加え，Fortranコンパイラも含めたoneAPIに含まれるC/C++/Fortranコンパイラについて整理します．
+
+# icc/icpc/ifort
+これは
+
