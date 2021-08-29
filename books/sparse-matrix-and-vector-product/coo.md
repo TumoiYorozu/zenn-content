@@ -1,24 +1,16 @@
 ---
-title: COO format
+title: 疎行列の格納形式：COO
 ---
+# 概要
+COO形式 (Coordinate形式，座標形式)は疎行列の格納形式の中で最も理解しやすく，簡単で，人間に優しいフォーマットです．
+つまり計算機に厳しいフォーマットです．
 
-この文章は [GitHub][GitHub] 上で継続的に更新され、[Zenn][zenn] にデプロイされます。
+計算機に厳しい理由は2つで，(1) 次章で述べるCRS形式と比べてデータ量が多いこと，(2) COO形式で格納された疎行列に対して疎行列ベクトル積を行う場合，スレッド並列化が困難なことです．
 
-[zenn]: https://zenn.dev/books/sparse-matrix-and-vector-product/
-[GitHub]: https://github.com/t-hishinuma/zenn-content/tree/main/books/sparse-matrix-and-vector-product
+繰り返しますが，**絶対に並列化が肝となるGPUなどでCOO形式を採用してはいけません**
 
-Contribution
-------------
-この本は下記のようにGNUフリー文書利用許諾契約書の元で配布されています。ただし文中に含まれるコード片を個別に利用する場合については [CC0][CC0] で扱われるとします。 
+[Scipy SparseのCOOのドキュメント ](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html#scipy.sparse.coo_matrix)
 
-[CC0]: https://creativecommons.org/share-your-work/public-domain/cc0/
+## hoge
 
-License
---------
-Copyright (C) 2021 Toshiaki Hishinuma
-
-この文書を、フリーソフトウェア財団発行の [GNU フリー文書利用許諾契約書](https://github.com/t-hishinuma/zenn-content/blob/main/LICENSE)(バージョン1.2かそれ以降から1つを選択)が定める条件の下で複製、頒布、あるいは改変することを許可する。変更不可部分、表カバーテキスト、裏カバーテキストは存在しない。
-
-Donate
--------
-もしこのプロジェクトに価値を感じたらDonateをお願いします。あなたが貢献する方法をコードを書くことだけではありません。[Zenn][Zenn] サービスでは本の代金としてではなく著者にDonateをすることが可能です。
+![coo.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/books/sparse-matrix-and-vector-product/COO.png)

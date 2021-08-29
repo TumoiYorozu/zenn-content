@@ -61,7 +61,7 @@ Matrix Market形式はヘッダ部とデータ部に分かれています．
 
 ### ヘッダ (バナーとも)
 
-```
+```sh
 %%MatrixMarket matrix coordinate real general
 ```
 
@@ -95,7 +95,7 @@ Matrix Market形式はヘッダ部とデータ部に分かれています．
 
 この本では，最も簡単な以下のヘッダの形式について取り扱います．
 
-```
+```sh
 %%MatrixMarket matrix coordinate real general
 ```
 
@@ -110,7 +110,7 @@ Matrix MarketやSuite Sparse Matrix collectionにアップロードされてい�
 
 今回は3x3の行列で，非零要素数が5個なので，以下のように書きます．
 
-```
+```sh
 3 3 5
 ```
 
@@ -119,7 +119,7 @@ Matrix MarketやSuite Sparse Matrix collectionにアップロードされてい�
 
 行数，列数，値をそれぞれ記述し，今回の行列では以下のように書きます．
 
-```
+```sh
 1 1 1.0
 2 1 2.0
 2 2 3.0
