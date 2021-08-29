@@ -2,6 +2,7 @@
 title: 疎行列のファイル形式：Matrix Market format
 ---
 
+# 概要
 Matrix Market Format (MM format, MM形式)は疎行列をファイルに書き出すときの一般的なフォーマットです．
 他にもMatlab形式やHarwell Boeing形式と呼ばれるものがありますが，現在最も主流なのはこのMM形式．．．な気がします．
 
@@ -97,7 +98,6 @@ Matrix Market形式はヘッダ部とデータ部に分かれています．
 ```
 %%MatrixMarket matrix coordinate real general
 ```
-
 
 ### コメント
 
