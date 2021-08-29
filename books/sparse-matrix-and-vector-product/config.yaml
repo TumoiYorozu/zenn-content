@@ -9,7 +9,7 @@ chapters:
   - intro
   - why_sparse
   - what_to_use
+  - matrix_market
   - coo
   - crs
-  - matrix_market
   - sparse_blas
