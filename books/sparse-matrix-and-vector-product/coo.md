@@ -2,21 +2,34 @@
 title: 疎行列の格納形式：COO
 ---
 # 概要
-COO形式 (Coordinate形式，座標形式)は疎行列の格納形式の中で最も理解しやすく，簡単で，人間に優しいフォーマットです．
+COO形式 (Coordinate形式，座標形式，ijv形式とも)は疎行列の格納形式の中で最も理解しやすく，簡単で，人間に優しいフォーマットです．
 つまり計算機に厳しいフォーマットです．
 
 計算機に厳しい理由は2つで，(1) 次章で述べるCRS形式と比べてデータ量が多いこと，(2) COO形式で格納された疎行列に対して疎行列ベクトル積を行う場合，スレッド並列化が困難なことです．
 
-そのため行列の作成や，Matrix Market Formatなどの形式でのファイルへの読み書きに使われることが多い．
+そのため行列の作成や，Matrix Market Formatなどの形式でのファイルへの読み書きに使われることが多いです．
+これを使って最後まで計算を続けることは考えないほうが良いでしょう．これは[Scipy SparseのCOOのドキュメント ](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html#scipy.sparse.coo_matrix)にもそう書いてあります．
 
-
-[Scipy SparseのCOOのドキュメント ](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html#scipy.sparse.coo_matrix)
 
 ## COO formatの構成
+COO形式は座標形式とも呼ばれるとおり，x座標，y座標，値の3つの値のペアで疎行列を格納する形式です．
 
 以下にCOO形式のメモリレイアウトを示します．
 
 ![coo.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/books/sparse-matrix-and-vector-product/COO.png)
+
+COO形式は3本の配列から成り，行数 $$N$$, 非零要素数 $$nnz$$の行列を以下の3つの配列で表現します．
+- 長さ$$nnz$$ の行番号を示す整数型インデックス配列 $$row\_index$$
+- 長さ$$nnz$$ の列番号を示す整数型インデックス配列 $$col\_index$$
+- 長さ$$nnz$$ の値を示す配列 $$val$$
+
+インデックス配列が32bit 整数, 値が64bit 浮動小数点数であれば，1要素を表現するのに必要なデータ量は:
+$ 32(行)+32(列)+64(値) = 128 bit (16 Byte) $
+となります．
+
+COO形式は少し定義が曖昧で，ライブラリによるのですが，以下の2点に注意してください．
+- 要素がソートされている保証がない
+- 要素の重複がある場合がある (重複している場合の扱いは未定義)
 
 # 余談，それでもCOO形式を使いたい場合
 COOの問題点は行単位で計算することができず，単純な実装では並列化時にスレッドセーフにならないことです．
