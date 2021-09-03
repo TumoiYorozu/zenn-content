@@ -2,14 +2,17 @@
 title: この文章について
 ---
 
-この文章は [GitHub][GitHub] 上で継続的に更新され、[Zenn][zenn] にデプロイされます。
+この本書では，著者が数値計算の一大ジャンルだと勝手に思っている疎行列ベクトル積について解説します．疎行列を制するものは数値計算を制するような気がします．
+なお，C/C++およびマルチスレッドプログラミングの基礎知識があることを前提とします．なお，本書ではマルチスレッドプログラミングにOpenMPを用います．
+
+この文章は [GitHub][GitHub] 上で継続的に更新され，[Zenn][zenn] にデプロイされます．
 
 [zenn]: https://zenn.dev/books/sparse-matrix-and-vector-product/
 [GitHub]: https://github.com/t-hishinuma/zenn-content/tree/main/books/sparse-matrix-and-vector-product
 
 Contribution
 ------------
-この本は下記のようにGNUフリー文書利用許諾契約書の元で配布されています。ただし文中に含まれるコード片を個別に利用する場合については [CC0][CC0] で扱われるとします。 
+この本は下記のようにGNUフリー文書利用許諾契約書の元で配布されています．ただし文中に含まれるコード片を個別に利用する場合については [CC0][CC0] で扱われるとします．
 
 [CC0]: https://creativecommons.org/share-your-work/public-domain/cc0/
 
@@ -21,4 +24,4 @@ Copyright (C) 2021 Toshiaki Hishinuma
 
 Donate
 -------
-もしこのプロジェクトに価値を感じたらDonateをお願いします。あなたが貢献する方法をコードを書くことだけではありません。[Zenn][Zenn] サービスでは本の代金としてではなく著者にDonateをすることが可能です。
+もしこのプロジェクトに価値を感じたらDonateをお願いします．あなたが貢献する方法をコードを書くことだけではありません．[Zenn][Zenn] サービスでは本の代金としてではなく著者にDonateをすることが可能です．
