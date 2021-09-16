@@ -47,7 +47,7 @@ C++でクラスなんかを使ってきれいにやりたい人は著者が開�
 このサンプルは2パートに分かれており，(1) MatrixMarket formatの `test.mtx` からCOOを作成し，(2) COOから次章でCRSに変換します．
 本章では前半部分にあたる(1)のCOOを作成する部分について説明します．
 
-```
+```cpp
 int N, nnz;
 
 //file open and read header to get matrix size
