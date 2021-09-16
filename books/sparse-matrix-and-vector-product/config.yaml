@@ -1,7 +1,7 @@
 title: "疎行列とベクトルを掛けたい貴方に"
 summary: "疎行列ベクトル積について解説します．解説にはC/C++を使います．無償ですが，何かの役に立った人はdonateしてくれると喜びます．"
 topics: ["数値計算"]
-published: false
+published: true
 allow_override: true
 price: 0
 chapters:
