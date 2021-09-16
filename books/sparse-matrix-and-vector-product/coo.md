@@ -35,6 +35,44 @@ COO形式は少し定義が曖昧で，ライブラリにもよるのですが�
 
 # COO形式の行列の取り扱い
 ## Matrix Market fomratからCOO形式の行列の作成
+Matrix Market FormatとCOO形式はほぼ同じなので，主にヘッダの処理が大変な作業になります．
+
+[こちら](https://github.com/t-hishinuma/SpUtil)のリポジトリに，Matrix Market formatからCOOの3本の配列を作成するプログラムを起きました．
+いわゆるヘッダライブラリになっており `SpUtil.h` をincludeするだけで使えます．好きに使ってください．
+
+なお，本書のサンプルコードは，あえてCで，構造体なども使わない形にしておきました．
+C++でクラスなんかを使ってきれいにやりたい人は著者が開発しているmonolishというライブラリの[このへん](https://github.com/ricosjp/monolish/blob/master/src/utils/IO/IO_coo.cpp)が参考になるかもしれません．
+
+[IO_and_convert.c](https://github.com/t-hishinuma/SpUtil/blob/main/test/IO_and_convert.c)がサンプルコードに当たります．
+このサンプルは2パートに分かれており，(1) MatrixMarket formatの `test.mtx` からCOOを作成し，(2) COOから次章でCRSに変換します．
+本章では前半部分にあたる(1)のCOOを作成する部分について説明します．
+
+```
+int N, nnz;
+
+//file open and read header to get matrix size
+FILE* fp = fopen("./test.mtx", "r");
+SpUtil_read_mm_header(fp, &N, &nnz);
+
+printf("N = %d, nnz = %d\n", N, nnz);
+
+// allocate COO array
+int* coo_row_index = (int*)malloc(sizeof(int)*nnz);
+int* coo_col_index = (int*)malloc(sizeof(int)*nnz);
+double* coo_val = (double*)malloc(sizeof(double)*nnz);
+
+// create COO from file
+SpUtil_mm2coo(fp, N, nnz, coo_row_index, coo_col_index, coo_val);
+
+// close
+fclose(fp);
+```
+
+1. `SpUtil_read_mm_header()` でヘッダを読み，エラー処理と行列サイズ $N$ , 非零要素数 $nnz$ を取得し，
+1. 取得したサイズを用いてユーザが配列をallocateし．
+1. `SpUtil_mm2coo()` を用いて，データ部を読んでCOOの配列を作成します．
+
+デバッグ用に，標準出力に値を吐き出す `SpUtil_print_coo()` という関数もあるので，よかったら使ってください．
 
 ## COO形式の疎行列ベクトル積 (逐次)
 インデックス配列を用いて順番に計算していくだけです．
@@ -71,13 +109,13 @@ for(int i = 0; i < nnz; i++){
 
 残念ながらこのコードは間違いです．$y$ の初期化については問題なく並列化できますが．疎行列ベクトル積に関してはこれで答えが合う保障はありません．
 
-試しに以下の3x3の密行列を考えます．
+試しに以下の3x3の密行列を考えます (ZennさんKatexのpmatrix使えんかった．．．)．
 
-\begin{pmatrix}
+```
 1 & 2 & 3\\
 4 & 5 & 6\\
 7 & 8 & 9\\
-\end{pmatrix}
+```
 
 これをCOO形式にした場合， $val$ 配列は[1,2,3,4,5,6,7,8,9]になります．これを2スレッドで均等に分割した場合，それぞれの計算領域は
 - 1スレッド目: [1,2,3,4,5]

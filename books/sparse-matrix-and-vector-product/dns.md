@@ -28,15 +28,14 @@ DNS形式などと呼ばれることもありますが，これは `Dense` ，�
 
 ```cpp
 for(int i=0; i<N; i++){
-    double tmp = 0.0;
+    y[i] = 0.0;
     for(int j=0; j<N; j++){
-     tmp += A[i*N+j] * x[j];
+     y[i] += A[i*N+j] * x[j];
     }
-    y[i] = tmp; 
 }
 ```
 
-計算量としては $N^2$ になります．
+計算量としては $2N^2$ になります(最内側の計算量は足し算と掛け算があるため2で，それをN*N回行う)．
 
 ## DNS形式の疎行列ベクトル積 (スレッド並列)
 Denseであれば，行単位で並列化すれば良いので，これもさほど難しくないです (Cの人はtmpとjをprivateにするのが必要ですが，今回はローカル変数にしてるので必要はない)．
@@ -44,11 +43,10 @@ Denseであれば，行単位で並列化すれば良いので，これもさほ
 ```cpp
 #pragma omp parallel for
 for(int i=0; i<N; i++){
-    double tmp = 0.0;
+    y[i] = 0.0;
     for(int j=0; j<N; j++){
-     tmp += A[i*N+j] * x[j];
+     y[i] += A[i*N+j] * x[j];
     }
-    y[i] = tmp; 
 }
 ```
 
