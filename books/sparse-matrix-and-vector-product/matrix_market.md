@@ -8,7 +8,7 @@ Matrix Market Format (MM format, MM形式)は疎行列をファイルに書き�
 
 この形式は[scipyでも入出力の形式としてサポートされており](https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.mmwrite.html)，Pythonなどからも簡単に利用することができます．
 
-名前の通り [Marix Market](https://math.nist.gov/MatrixMarket/) というベンチマーク行列をまとめたWebページで提案されたフォーマットです．
+名前の通り[MarixMarket](https://math.nist.gov/MatrixMarket/)というベンチマーク行列をまとめたWebページで提案されたフォーマットです．
 Matrix Marketには十分なMM形式の説明や読み込みのためのソースコードなどが揃っていますが，すべて英語なので本ページでは一応日本語で簡単にまとめておきます．
 
 この形式は一般行列以外にも対称行列やベクトルを表現することも出来るのですが，今回の記事では全ての非零要素を含む(対称の省略などをしない)，正方，実数の行列について扱います．
@@ -25,8 +25,8 @@ Matrix Market formatは，難しいことは特になく，基本的には行数
 Matrix Market形式はヘッダ部とデータ部に分かれています．
 
 ヘッダ部では：
-- `%%` から始まるヘッダ (1行目，バナーともよばれる)
-- `%` から始まるコメント (ヘッダ2行目以降)
+- `%%`から始まるヘッダ (1行目，バナーともよばれる)
+- `%`から始まるコメント (ヘッダ2行目以降)
 
 を記述し，データ部では，
 
@@ -65,13 +65,13 @@ Matrix Market形式はヘッダ部とデータ部に分かれています．
 %%MatrixMarket matrix coordinate real general
 ```
 
-1ブロック目の `%%MatrixMarket` はMatrix Market形式であることを示すものです．
+1ブロック目の`%%MatrixMarket`はMatrix Market形式であることを示すものです．
 
-2ブロック目は表現するものを指します．`matrix` 以外が指定されているところはほとんど見ませんが，`vector` や `directed graph` が指定できることになっています．
-2度も言いますが `matrix` 以外を読める実装を見たことはほとんどないです．
+2ブロック目は表現するものを指します．`matrix`以外が指定されているところはほとんど見ませんが，`vector`や`directed graph`が指定できることになっています．
+2度も言いますが`matrix`以外を読める実装を見たことはほとんどないです．
 
-3ブロック目は座標形式で表現されている事を意味する `coordinate` です．これも `coordinate` 以外を見たことはないですが，ベクトルなどでは `array` にするそうです．
-2度言いますが `coordinate` 以外を読める実装はry．
+3ブロック目は座標形式で表現されている事を意味する`coordinate`です．これも`coordinate`以外を見たことはないですが，ベクトルなどでは`array`にするそうです．
+2度言いますが`coordinate`以外を読める実装はry．
 
 4ブロック目では値の型を指定します．ここには:
 - real
@@ -79,7 +79,7 @@ Matrix Market形式はヘッダ部とデータ部に分かれています．
 - integer
 - pattern
 
-などが指定できます．`real`, `complex`, `integer`は説明不要かと思います．`pattern` が指定されている所は見たことがありません．
+などが指定できます．`real`, `complex`, `integer`は説明不要かと思います．`pattern`が指定されている所は見たことがありません．
 
 5ブロック目は行列の構造を指定します．
 - general
@@ -87,11 +87,11 @@ Matrix Market形式はヘッダ部とデータ部に分かれています．
 - Hermitian
 - skew-symmetric
 
-`general` はすべての非零要素が格納されています．Matrix Market形式に対応しているソフトウェアであれば， `general` にはまず対応していると思っていいでしょう．
+`general`はすべての非零要素が格納されています．Matrix Market形式に対応しているソフトウェアであれば，`general`にはまず対応していると思っていいでしょう．
 
-`symmetric` や `Hermitian`の場合，対角要素を含む下半分のみの非零要素を格納します．MatrixMarketやSuite Sparse Matrix collectionにも多くアップロードされていますが，対称行列に対する疎行列ベクトル積のライブラリはほとんどないため，読み込みも対応していないライブラリが多くあります．
+`symmetric`や`Hermitian`の場合，対角要素を含む下半分のみの非零要素を格納します．Matrix MarketやSuite Sparse Matrix collectionにも多くアップロードされていますが，対称行列に対する疎行列ベクトル積のライブラリはほとんどないため，読み込みも対応していないライブラリが多くあります．
 
-`skew-symmetric` は交代行列ですが．．．実装を見たことはありません．
+`skew-symmetric`は交代行列ですが．．．実装を見たことはありません．
 
 この本では，最も簡単な以下のヘッダの形式について取り扱います．
 
@@ -101,7 +101,7 @@ Matrix Market形式はヘッダ部とデータ部に分かれています．
 
 ### コメント
 
-ヘッダ部では，2行目以降に `%` で始まる好きなコメントを書けます．
+ヘッダ部では，2行目以降に`%`で始まる好きなコメントを書けます．
 
 Matrix MarketやSuite Sparse Matrix collectionにアップロードされている行列を見る限り，Authorや行列の説明を書くことが多いようです．
 
