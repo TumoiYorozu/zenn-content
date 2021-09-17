@@ -86,7 +86,7 @@ for(int i = 0; i < N; i++){
 }
 
 for(int i=0; i<nnz; i++){
-    y[ col_index[i] ] += A.val[i] * x[ row_index[i] ];
+    y[ row_index[i] ] += A.val[i] * x[ col_index[i] ];
 }
 ```
 
@@ -103,7 +103,7 @@ for(int i = 0; i < N; i++){
 
 #pragma omp parallel for
 for(int i = 0; i < nnz; i++){
-    y[ col_index[i] ] += A.val[i] * x[ row_index[i] ];
+    y[ row_index[i] ] += A.val[i] * x[ col_index[i] ];
 }
 ```
 
