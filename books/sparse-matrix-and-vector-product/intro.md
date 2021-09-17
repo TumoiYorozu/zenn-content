@@ -67,7 +67,7 @@ title: はじめに
 ## CRS形式の名称の問題点とCSR形式
 COOやCRSは行列をメモリ上に保持するための格納形式 (Storage format)です．つまりCOO格納形式はCoodinate Storgae formatと書いて良いわけであるが，CRSはCompressed Row Storageの略なのでCompressed Row Storage Storage formatとなってStorageが重複します．
 
-このような初期の命名ミスが原因(だと思う，出典はない)で，CRS形式はCSR (Compressed Sparse Row)形式とも呼ばれます．というか，現在はCSR形式のほうが普及しつつあり，IntelやNVIDIAのライブラリでもCSRと表記されています．筆者は老害なのでCRSと呼ぶが，若者はCSRと呼んだほうが良いのかもしれないです．
+このような初期の命名ミスが原因(だと思う，出典はない)で，CRS形式はCSR (Compressed Sparse Row)形式とも呼ばれます．というか，現在はCSR形式のほうが普及しつつあり，IntelやNVIDIAのライブラリでもCSRと表記されています．筆者は老害なのでCRSと呼びますが，若者はCSRと呼んだほうが良いのかもしれないです．
 
 
 # 補足) 疎な行列を密行列として扱うと無駄な計算が生じる理由
