@@ -25,7 +25,7 @@ published: true
 
 と書いてあります．簡単な図を使って雑に説明します．
 
-![amdahl.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/articles/img/amdahl.png)
+![amdahl.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/articles/img/Amdahl.png)
 
 通常，並列化を行う際には時間がかかる計算から並列化を試みるのが自然です．1 coreの場合は，オレンジの部分が明らかに支配的 (time = 90)ですから，青い部分 (time = 10)は放っておいてオレンジの部分を高速化するのが普通です．
 一方で10 coreになると90だったオレンジは9まで高速化され，並列化されずに方っておかれた青い部分のほうがむしろ時間がかかっています．
