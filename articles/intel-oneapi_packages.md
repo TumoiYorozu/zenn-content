@@ -43,7 +43,7 @@ Fortranコンパイラとしてifortに加えて新しくifxが追加され，�
 # Intelのコンパイラ開発ロードマップ
 [こちらの動画](https://techdecoded.intel.io/essentials/introducing-the-next-gen-of-intel-parallel-studio-transitioning-to-the-latest-hpc-software-development-suite/#gs.9h029u)の24分頃に，Intelのコンパイラに関するロードマップが紹介されています．
 
-![intel_compiler_roadmap.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/articles/img/intel_compiler_roadmap.png)
+![intel_compiler_roadmap.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/articles/img/Amdahl.png)
 
 この画像から，以下のことが分かります．
 
