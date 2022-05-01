@@ -1,5 +1,5 @@
 ---
-title: "Mermaidはどこで使えるのか"
+title: "MermaidはどのWebサービスで使えるのか"
 type: "tech"
 topics: ["Tech"]
 published: false
@@ -10,27 +10,42 @@ published: false
 GitHubで使えるようになったのは大変嬉しい話ですが，他にどこで使えるのかというのがいまいちわからないので調べました．
 
 ## Mermaidってなに
-[これ](https://zenn.dev/okazuki/articles/learning-mermaid)でも見てくれ．
+ここでは知らない人のことは想定しないので[他の人の記事](https://zenn.dev/okazuki/articles/learning-mermaid)でも見てくれ．
 
 こういうのを書くと
 ~~~
 ```mermaid
 graph TD;
   A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
 ```
 ~~~
 
-こういうのが出てくるんだ．なっ？
-
-![mermaid.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/articles/img/mermaid.png)
+こういうのが出てくるんだ．
 
 ```mermaid
 graph TD;
   A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
 ```
+
+以上
+
+# 使えるサービス
+私の主観と偏見で調べてきました．このサービスでも使えるから足してくれって人がいたらコメントに書いてください．
+
+
+|            | mermaid | URL                                         |
+|------------|---------|---------------------------------------------|
+| Qiita      | ○       | https://qiita.com/                          |
+| Zenn       | ○       | https://zenn.dev/                           |
+| Github     | ○       | https://github.com/                         |
+| gitlab.com | ○       | https://gitlab.com/                         |
+| esa.io     | ○       | https://esa.io/                             |
+| HackMD     | ○       | https://hackmd.io/                          |
+| stackedit  | ○       | https://stackedit.io/                       |
+| dillinger  | ×       | https://dillinger.io/                       |
+| Marxico    | ×       | http://marxi.co/                            |
+| Editor.md  | ×       | http://editor.md.ipandao.com/en.html        |
+| Jira       | ×       | https://www.atlassian.com/ja/software/jira/ |
+| nortion    | ○       | https://www.notion.so/                      |
+
+ちなみに私はZennとHackMDとGitHub/gitlabを使って生きているので，すべての環境でMermaidが使えそうです．
