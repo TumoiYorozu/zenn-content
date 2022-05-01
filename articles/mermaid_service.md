@@ -48,4 +48,6 @@ graph TD;
 | Jira       | ×       | https://www.atlassian.com/ja/software/jira/ |
 | nortion    | ○       | https://www.notion.so/                      |
 
+それっぽい思いついたやつを調べただけなのでJiraはmarkdownだけどmarkdownじゃねえよみたいなコメントは知らない．
+
 ちなみに私はZennとHackMDとGitHub/gitlabを使って生きているので，すべての環境でMermaidが使えそうです．
