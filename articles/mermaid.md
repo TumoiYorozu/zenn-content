@@ -14,6 +14,7 @@ GitHubで使えるようになったのは大変嬉しい話ですが，他に�
 
 こういうのを書くと
 
+~~~
 ```mermaid
 graph TB
     A[Hard edge] -->|Link text| B(Round edge)
@@ -21,6 +22,8 @@ graph TB
     C -->|One| D[Result one]
     C -->|Two| E[Result two]
 ```
+~~~
 
 こういうのが出てくるんだ．なっ？
 
+![mermaid.png](https://raw.githubusercontent.com/t-hishinuma/zenn-content/main/articles/img/mermaid.png)
