@@ -14,9 +14,12 @@ GitHubで使えるようになったのは大変嬉しい話ですが，他に�
 
 こういうのを書くと
 
-```mermaid_gomafu
-flowchart LR
-A --> B
+```mermaid
+graph TB
+    A[Hard edge] -->|Link text| B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
 ```
 
 こういうのが出てくるんだ．なっ？
