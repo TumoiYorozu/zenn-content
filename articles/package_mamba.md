@@ -5,12 +5,12 @@ topics: ["Tech", "C++"]
 published: true
 ---
 
-## はじめに
+# はじめに
 パッケージマネージャmambaとmambaプロジェクトについて調べる．
 
 mamba Link: https://github.com/mamba-org/mamba
 
-## mambaが解決したいこと
+# mambaが解決したいこと
 conda / conda forge依存のソフトウェアが多い中で，これらは
 
 - パッケージのサーチやダウンロードが遅い
@@ -21,7 +21,7 @@ conda / conda forge依存のソフトウェアが多い中で，これらは
 
 を解決したいらしい
 
-## mamba調べまとめ
+# mamba調べまとめ
 - 性能以外，Anacodaと変わんない
     - 普通に仮想環境作って使う
     - 当然，conda-forgeにないものはなく，より良い/新しいものを見つけてきたりはしないっぽい
