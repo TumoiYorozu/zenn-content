@@ -1,11 +1,12 @@
 ---
-title: "パッケージ配布について考える1：conda/mamba"
+title: "パッケージ配布について考える1：mamba"
 type: "tech"
 topics: ["Tech", "C++"]
 published: true
 ---
 
 # はじめに
+理想のパッケージ管理ツールを探す旅に出ている．
 パッケージマネージャmambaとmambaプロジェクトについて調べる．
 
 mamba Link: https://github.com/mamba-org/mamba
