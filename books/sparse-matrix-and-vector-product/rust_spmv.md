@@ -1,4 +1,6 @@
-# Rustで疎行列ベクトル積
+---
+title: Rustで疎行列ベクトル積
+---
 
 この記事[数値計算アドベントカレンダー2022](https://qiita.com/advent-calendar/2022/numerical_analysis)の20日目の記事です．
 
