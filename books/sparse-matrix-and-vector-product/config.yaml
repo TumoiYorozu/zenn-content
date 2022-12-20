@@ -14,3 +14,4 @@ chapters:
   - crs
   - spmv_hpc
   - sparse_blas
+  - rust_spmv
